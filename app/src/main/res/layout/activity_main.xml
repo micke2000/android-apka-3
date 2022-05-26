@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PobieranieActivity">
+
+
+
+    <EditText
+        android:id="@+id/adres_edit"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:hint="Adres"
+        android:layout_marginStart="10dp"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/adres" />
+
+    <TextView
+        android:id="@+id/adres"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:hint="Adres strony"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/getInformationButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/adres"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Recive Information" />
+
+    <TextView
+        android:id="@+id/rozmiar_texview"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:hint="0"
+        android:textSize="20dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/file_size"
+        app:layout_constraintTop_toBottomOf="@id/getInformationButton" />
+
+    <TextView
+        android:id="@+id/file_size"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:hint="Rozmiar pliku"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/getInformationButton" />
+
+    <TextView
+        android:id="@+id/type_textview"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="10dp"
+        android:hint="0"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/file_size"
+        app:layout_constraintTop_toBottomOf="@id/rozmiar_texview" />
+
+    <TextView
+        android:id="@+id/file_type"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:hint="Typ pliku"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/file_size" />
+
+    <Button
+        android:id="@+id/downloadButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Download file"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/file_type" />
+
+    <ProgressBar
+        android:id="@+id/mProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/downloadButton"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
