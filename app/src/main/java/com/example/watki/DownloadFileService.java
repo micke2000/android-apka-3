@@ -134,7 +134,7 @@ public class DownloadFileService extends IntentService {
             PostepInfo postep = new PostepInfo(mBytesDownloaded,mtotalSize,"w trakcie");
             wyslijBroadcast(postep,"downloadProgress");
         }
-
+        PostepInfo postep = new PostepInfo(mBytesDownloaded,mtotalSize,"done");
         Log.d("Download finished","Your file has been downloaded.");
         writer.flush();
         writer.close();

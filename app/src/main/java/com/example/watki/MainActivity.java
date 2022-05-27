@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mFileTypeTextView;
     private Button mDownloadButton;
     private ProgressBar mProgressBar;
+    private TextView mDownloadedBytes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         mFileSizeTextView = findViewById(R.id.rozmiar_texview);
         mFileTypeTextView = findViewById(R.id.type_textview);
         mDownloadButton = findViewById(R.id.downloadButton);
+        mDownloadedBytes = findViewById(R.id.downloadedBytesTextView);
         mProgressBar = findViewById(R.id.mProgressBar);
         mButtonGetInformation.setOnClickListener(view -> {
             DownloadFileDetails fileDetailsTask = new DownloadFileDetails();
@@ -158,8 +160,13 @@ public class MainActivity extends AppCompatActivity {
                     + postep.mStatus + "," + postep.mPobranychBajtow +","+postep.mRozmiar);
            mProgressBar.setMax(postep.mRozmiar);
            mProgressBar.setProgress(postep.mPobranychBajtow);
-
-        }}
+           mDownloadedBytes.setText(String.valueOf(postep.mPobranychBajtow));
+           if("done".equals(postep.mStatus)){
+               mDownloadedBytes.setText("Done");
+               Toast.makeText(MainActivity.this, "Downloading finished", Toast.LENGTH_SHORT).show();
+           }
+        }
+    }
     private TimeBroadcastReceiver mTimeBroadcastReceiver = new TimeBroadcastReceiver();
     @Override
     protected void onResume() {
@@ -170,5 +177,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         unregisterReceiver(mTimeBroadcastReceiver);
         super.onStop();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("FileSize",mFileSizeTextView.getText().toString());
+        outState.putString("FileType",mFileTypeTextView.getText().toString());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        String fileSize = savedInstanceState.getString("FileSize");
+        String fileType = savedInstanceState.getString("FileType");
+
+        mFileSizeTextView.setText(fileSize);
+        mFileTypeTextView.setText(fileType);
     }
 }

@@ -87,7 +87,28 @@
         android:text="Download file"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/file_type" />
+        app:layout_constraintTop_toBottomOf="@id/downloadedBytesTextView" />
+
+    <TextView
+        android:id="@+id/downalodedLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Downloaded bytes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/file_type"
+        />
+
+    <TextView
+        android:id="@+id/downloadedBytesTextView"
+        android:layout_width="wrap_content"
+        android:textSize="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="0"
+        app:layout_constraintStart_toEndOf="@id/downalodedLabel"
+        app:layout_constraintTop_toBottomOf="@id/file_type"
+        />
 
     <ProgressBar
         android:id="@+id/mProgressBar"
